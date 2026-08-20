@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Yo'nalish Kompas — Registon O'quv Markazi</title>
+<meta name="description" content="Psixologik test orqali o'zingizga mos oliy ta'lim yo'nalishi, kirish fanlari va kelajak kasbini aniqlang. Registon O'quv Markazi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#EF5123;
+    --brand-deep:#C43A0F;
+    --brand-dark:#8F2A0A;
+    --brand-soft:#FFEDE5;
+    --brand-tint:#FFF6F1;
+    --ink:#241611;
+    --paper:#FFFAF7;
+    --line:#F5DFD4;
+    --muted:#9C8578;
+  }
+
+  /* ============ Yordamchi klasslar (Tailwind o'rniga — CDN'siz ishlaydi) ============ */
+  .flex{display:flex}.grid{display:grid}.block{display:block}
+  .flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}
+  .items-center{align-items:center}
+  .justify-between{justify-content:space-between}.justify-center{justify-content:center}
+  .grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-3\.5{gap:.875rem}
+  .w-full{width:100%}.w-auto{width:auto}.w-16{width:4rem}
+  .h-2{height:.5rem}.h-9{height:2.25rem}.h-16{height:4rem}.h-full{height:100%}
+  .max-w-md{max-width:28rem}.min-h-screen{min-height:100vh}
+  .mx-auto{margin-left:auto;margin-right:auto}
+  .mt-0\.5{margin-top:.125rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}
+  .mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}
+  .mb-1{margin-bottom:.25rem}.mb-1\.5{margin-bottom:.375rem}.mb-2{margin-bottom:.5rem}
+  .mb-2\.5{margin-bottom:.625rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}
+  .mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}
+  .my-7{margin-top:1.75rem;margin-bottom:1.75rem}
+  .p-5{padding:1.25rem}
+  .px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}
+  .px-6{padding-left:1.5rem;padding-right:1.5rem}
+  .py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}
+  .py-3{padding-top:.75rem;padding-bottom:.75rem}.py-3\.5{padding-top:.875rem;padding-bottom:.875rem}
+  .py-4{padding-top:1rem;padding-bottom:1rem}
+  .pt-6{padding-top:1.5rem}.pb-2{padding-bottom:.5rem}.pb-10{padding-bottom:2.5rem}.pb-12{padding-bottom:3rem}
+  .rounded-full{border-radius:9999px}.rounded-xl{border-radius:.75rem}.rounded-2xl{border-radius:1rem}
+  .border{border-width:1px;border-style:solid}
+  .overflow-hidden{overflow:hidden}.outline-none{outline:none}
+  .text-center{text-align:center}.underline{text-decoration:underline}
+  .text-white{color:#fff}
+  .font-medium{font-weight:500}.font-semibold{font-weight:600}.font-bold{font-weight:700}
+  .text-xs{font-size:.75rem;line-height:1rem}.text-sm{font-size:.875rem;line-height:1.25rem}
+  .text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}
+  .text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}
+  .text-\[11px\]{font-size:11px}.text-\[12px\]{font-size:12px}.text-\[12\.5px\]{font-size:12.5px}
+  .text-\[13px\]{font-size:13px}.text-\[14\.5px\]{font-size:14.5px}.text-\[15px\]{font-size:15px}
+  .text-\[19px\]{font-size:19px}.text-\[22px\]{font-size:22px}.text-\[24px\]{font-size:24px}
+  .text-\[28px\]{font-size:28px}
+  .leading-tight{line-height:1.25}.leading-snug{line-height:1.375}.leading-relaxed{line-height:1.625}
+  .tracking-wide{letter-spacing:.025em}.tracking-wider{letter-spacing:.05em}
+  .opacity-80{opacity:.8}.opacity-85{opacity:.85}
+
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    margin:0;
+  }
+  .font-display{font-family:'Space Grotesk',sans-serif;}
+  .screen{display:none;}
+
+  /* ============ FON: yumshoq 3D sharlar ============ */
+  .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(64px);}
+  .orb-1{width:340px;height:340px;top:-130px;right:-150px;opacity:.45;
+    background:radial-gradient(circle at 35% 35%,#FF9068,var(--brand) 72%);
+    animation:orbA 16s ease-in-out infinite;}
+  .orb-2{width:300px;height:300px;bottom:-140px;left:-150px;opacity:.3;
+    background:radial-gradient(circle at 40% 40%,#FFC9B0,#FF7A47 78%);
+    animation:orbB 21s ease-in-out infinite;}
+  @keyframes orbA{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,26px) scale(1.07)}}
+  @keyframes orbB{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(26px,-20px) scale(1.05)}}
+  .wrap{position:relative;z-index:1;}
+
+  /* ============ 3D KITOB — signature element ============ */
+  .scene{width:220px;height:158px;margin:0 auto;perspective:780px;}
+  .scene.sm{width:148px;height:106px;perspective:540px;}
+  .book{width:100%;height:100%;position:relative;transform-style:preserve-3d;
+    animation:bookFloat 7.5s ease-in-out infinite;}
+  @keyframes bookFloat{
+    0%,100%{transform:rotateX(25deg) rotateZ(-7deg) translateY(0)}
+    50%{transform:rotateX(21deg) rotateZ(3deg) translateY(-11px)}
+  }
+  .side{position:absolute;top:20%;height:64%;width:44%;transform-style:preserve-3d;}
+  .side.l{left:6%;transform-origin:right center;transform:rotateY(24deg);}
+  .side.r{right:6%;transform-origin:left center;transform:rotateY(-24deg);}
+  .cover{position:absolute;inset:0;
+    background:linear-gradient(125deg,#FF8250,var(--brand) 52%,var(--brand-deep));
+    box-shadow:0 16px 28px -14px rgba(143,42,10,.5);}
+  .side.l .cover{border-radius:7px 1px 1px 7px;}
+  .side.r .cover{border-radius:1px 7px 7px 1px;}
+  .paper{position:absolute;background:linear-gradient(125deg,#FFFEFC,#FFF3EB);}
+  .side.l .paper{top:6%;bottom:6%;left:6%;right:0;border-radius:4px 0 0 4px;}
+  .side.r .paper{top:6%;bottom:6%;right:6%;left:0;border-radius:0 4px 4px 0;}
+  .pp1{transform:translateZ(3px);} .pp2{transform:translateZ(6px);}
+  .ln{position:absolute;left:14%;right:14%;height:2px;border-radius:2px;background:#FFD5BE;}
+  /* varaq o'girilishi */
+  .turn{position:absolute;top:20%;height:64%;width:44%;right:6%;
+    transform-origin:left center;transform-style:preserve-3d;
+    animation:pageTurn 6s cubic-bezier(.45,0,.35,1) infinite;}
+  .turn .paper{top:6%;bottom:6%;right:6%;left:0;border-radius:0 4px 4px 0;
+    box-shadow:-8px 2px 16px -8px rgba(143,42,10,.4);}
+  @keyframes pageTurn{
+    0%,22%{transform:rotateY(-24deg) translateZ(7px)}
+    58%,100%{transform:rotateY(-156deg) translateZ(7px)}
+  }
+  .book-shadow{width:150px;height:20px;margin:-24px auto 0;border-radius:50%;
+    background:radial-gradient(ellipse at center,rgba(143,42,10,.24),transparent 70%);
+    animation:shadowPulse 7.5s ease-in-out infinite;}
+  .scene.sm + .book-shadow{width:100px;height:14px;margin-top:-16px;}
+  @keyframes shadowPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(.82);opacity:.5}}
+
+  /* ============ O'tishlar ============ */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  .fade-up{animation:fadeUp .5s ease both;}
+  @keyframes cardIn{from{opacity:0;transform:perspective(900px) rotateX(8deg) translateY(20px)}
+    to{opacity:1;transform:perspective(900px) rotateX(0) translateY(0)}}
+  .card-in{animation:cardIn .42s ease both;}
+  @keyframes flipIn{from{opacity:0;transform:perspective(1000px) rotateX(-52deg)}
+    to{opacity:1;transform:perspective(1000px) rotateX(0)}}
+  .flip-in{animation:flipIn .7s cubic-bezier(.2,.8,.25,1.08) both;}
+
+  .progress-track{background:#F6E3D7;}
+  .progress-fill{background:linear-gradient(90deg,#FF8250,var(--brand),var(--brand-deep));transition:width .45s ease;}
+
+  .opt-btn{
+    border:1.5px solid var(--line);background:#fff;width:100%;text-align:left;cursor:pointer;
+    transition:transform .17s ease,border-color .17s ease,box-shadow .17s ease,background .17s ease;
+    transform:perspective(700px) translateZ(0);
+  }
+  .opt-btn:hover{border-color:var(--brand);background:var(--brand-tint);
+    transform:perspective(700px) translateZ(15px) rotateX(1.5deg);
+    box-shadow:0 15px 28px -17px rgba(196,58,15,.5);}
+  .opt-btn:active{transform:perspective(700px) translateZ(4px) scale(.99);}
+  .opt-btn.selected{border-color:var(--brand);background:var(--brand-soft);}
+  .opt-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px;}
+
+  .cat-chip{border-radius:999px;padding:5px 13px;font-size:12px;font-weight:600;display:inline-block;}
+
+  .cta-btn{
+    background:linear-gradient(135deg,#FF8250,var(--brand) 45%,var(--brand-deep));
+    box-shadow:0 14px 28px -12px rgba(239,81,35,.6);border:none;cursor:pointer;
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(239,81,35,.72);}
+  .cta-btn:active{transform:translateY(0) scale(.99);}
+  .cta-btn:disabled{opacity:.6;transform:none;cursor:wait;}
+
+  input{transition:border-color .15s ease,box-shadow .15s ease;font-family:inherit;}
+  input:focus{border-color:var(--brand)!important;box-shadow:0 0 0 3px rgba(239,81,35,.14);}
+
+  .bar-track{background:#F6E3D7;border-radius:999px;height:10px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#FF9068,var(--brand));
+    width:0;transition:width 1.1s cubic-bezier(.2,.8,.3,1);}
+
+  #tg-warn{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;background:var(--ink);
+    color:#FFD9C7;font-size:12px;line-height:1.55;padding:11px 14px;border-radius:12px;display:none;
+    box-shadow:0 10px 30px rgba(0,0,0,.32);}
+  #admin-panel{position:fixed;inset:0;z-index:70;background:rgba(36,22,17,.94);color:#fff;
+    padding:20px;overflow-y:auto;display:none;font-size:13px;line-height:1.6;}
+  #admin-panel pre{background:#000;padding:10px;border-radius:8px;overflow-x:auto;
+    white-space:pre-wrap;word-break:break-all;font-size:11px;}
+
+  @media (prefers-reduced-motion:reduce){
+    .book,.orb-1,.orb-2,.book-shadow{animation:none!important;}
+    .fade-up,.card-in,.flip-in{animation-duration:.01s!important;}
+    .opt-btn:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="wrap max-w-md mx-auto min-h-screen">
+
+  <header class="px-6 pt-6 pb-2 flex items-center justify-between">
+    <img src="logo.png" alt="Registon O'quv Markazi" class="h-9 w-auto"
+         onerror="this.style.display='none';document.getElementById('logo-txt').style.display='block';">
+    <div id="logo-txt" class="font-display font-bold text-lg" style="color:var(--brand);display:none">REGISTON</div>
+    <div class="text-[11px] font-semibold tracking-wide" style="color:var(--muted)">YO'NALISH KOMPAS</div>
+  </header>
+
+  <!-- ============ 1. BOSH EKRAN ============ -->
+  <section id="screen-welcome" class="screen px-6 pb-10" style="display:block">
+    <div class="mt-6 fade-up">
+      <div class="scene">
+        <div class="book">
+          <div class="side l">
+            <div class="cover"></div><div class="paper pp1"></div>
+            <div class="paper pp2"><i class="ln" style="top:26%"></i><i class="ln" style="top:44%"></i><i class="ln" style="top:62%;right:36%"></i></div>
+          </div>
+          <div class="side r">
+            <div class="cover"></div><div class="paper pp1"></div>
+            <div class="paper pp2"><i class="ln" style="top:26%"></i><i class="ln" style="top:44%"></i></div>
+          </div>
+          <div class="turn"><div class="paper"></div></div>
+        </div>
+      </div>
+      <div class="book-shadow"></div>
+    </div>
+
+    <div class="fade-up" style="animation-delay:.08s">
+      <h1 class="font-display font-bold text-[28px] leading-tight text-center mt-6">
+        Kelajagingizga mos <span style="color:var(--brand)">yo'nalishni</span> toping
+      </h1>
+      <p class="text-center mt-3 leading-relaxed text-[15px]" style="color:var(--muted)">
+        14 ta psixologik savol orqali fikrlash uslubingiz, qadriyatlaringiz va tabiiy moyilligingizni aniqlaymiz —
+        so'ng sizga mos oliy ta'lim yo'nalishi, kirish imtihon fanlari va kasblarni ko'rsatamiz.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 my-7 text-center">
+      <div class="fade-up rounded-2xl py-3" style="animation-delay:.14s;background:var(--brand-tint);border:1px solid var(--line)">
+        <div class="text-[22px] font-display font-bold" style="color:var(--brand)">14</div>
+        <div class="text-[11px] mt-0.5" style="color:var(--muted)">savol</div>
+      </div>
+      <div class="fade-up rounded-2xl py-3" style="animation-delay:.2s;background:var(--brand-tint);border:1px solid var(--line)">
+        <div class="text-[22px] font-display font-bold" style="color:var(--brand)">227</div>
+        <div class="text-[11px] mt-0.5" style="color:var(--muted)">OTM yo'nalishi</div>
+      </div>
+      <div class="fade-up rounded-2xl py-3" style="animation-delay:.26s;background:var(--brand-tint);border:1px solid var(--line)">
+        <div class="text-[22px] font-display font-bold" style="color:var(--brand)">4</div>
+        <div class="text-[11px] mt-0.5" style="color:var(--muted)">daqiqa</div>
+      </div>
+    </div>
+
+    <button onclick="startQuiz()" class="cta-btn w-full py-4 rounded-2xl font-display font-bold text-white text-base fade-up" style="animation-delay:.3s">
+      Testni boshlash →
+    </button>
+    <p class="text-center text-[11px] mt-4" style="color:var(--muted)">2026/2027 o'quv yili rasmiy fanlar majmuasi asosida</p>
+  </section>
+
+  <!-- ============ 2. TEST ============ -->
+  <section id="screen-quiz" class="screen px-6 pb-10">
+    <div class="flex items-center justify-between mb-2 mt-3">
+      <button onclick="prevQuestion()" id="back-btn" class="text-xs font-semibold" style="color:var(--muted);background:none;border:none;cursor:pointer;padding:0;visibility:hidden">← Orqaga</button>
+      <span class="text-xs font-bold" style="color:var(--brand)" id="q-counter">1 / 14</span>
+    </div>
+    <div class="progress-track h-2 rounded-full overflow-hidden mb-6">
+      <div class="progress-fill h-full rounded-full" id="progress-bar" style="width:7%"></div>
+    </div>
+
+    <div id="question-wrap" class="card-in">
+      <div class="text-[11px] font-bold tracking-wider mb-2" style="color:var(--brand)" id="q-tag"></div>
+      <h2 class="font-display font-bold text-[19px] leading-snug mb-5" id="q-text"></h2>
+      <div id="q-options" class="flex flex-col gap-2.5"></div>
+    </div>
+  </section>
+
+  <!-- ============ 3. LID PANELI ============ -->
+  <section id="screen-lead" class="screen px-6 pb-10">
+    <div class="mt-8 mb-6 text-center fade-up">
+      <div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:var(--brand-soft)">
+        <span class="text-3xl">🎯</span>
+      </div>
+      <h2 class="font-display font-bold text-2xl">Natijangiz tayyor!</h2>
+      <p class="mt-2 leading-relaxed text-[15px]" style="color:var(--muted)">
+        Natijani ko'rish uchun ma'lumotlaringizni qoldiring — Registon mutaxassisi bog'lanib,
+        yo'nalish va kirish fanlari bo'yicha <b style="color:var(--ink)">bepul maslahat</b> beradi.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-3 fade-up" style="animation-delay:.1s">
+      <div>
+        <label class="text-xs font-semibold mb-1.5 block" style="color:var(--muted)">Ismingiz *</label>
+        <input id="lead-name" type="text" placeholder="Ismingizni kiriting" autocomplete="name"
+          class="w-full px-4 py-3.5 rounded-xl border outline-none text-[15px]" style="border-color:var(--line);background:#fff">
+      </div>
+      <div>
+        <label class="text-xs font-semibold mb-1.5 block" style="color:var(--muted)">Telefon raqamingiz *</label>
+        <input id="lead-phone" type="tel" placeholder="+998 90 123 45 67" autocomplete="tel" inputmode="tel"
+          class="w-full px-4 py-3.5 rounded-xl border outline-none text-[15px]" style="border-color:var(--line);background:#fff">
+      </div>
+      <div>
+        <label class="text-xs font-semibold mb-1.5 block" style="color:var(--muted)">Nechanchi sinfda o'qiysiz? (ixtiyoriy)</label>
+        <input id="lead-grade" type="text" placeholder="Masalan: 9-sinf"
+          class="w-full px-4 py-3.5 rounded-xl border outline-none text-[15px]" style="border-color:var(--line);background:#fff">
+      </div>
+      <p id="lead-error" class="text-xs font-medium" style="color:#D22;display:none"></p>
+      <button onclick="submitLead()" id="lead-submit-btn" class="cta-btn w-full py-4 rounded-2xl font-display font-bold text-white text-base mt-1">
+        Natijamni ko'rish →
+      </button>
+      <button onclick="backToQuiz()" class="text-center text-xs underline py-1" style="color:var(--muted);background:none;border:none;cursor:pointer">← Savollarga qaytish</button>
+    </div>
+  </section>
+
+  <!-- ============ 4. NATIJA ============ -->
+  <section id="screen-result" class="screen px-6 pb-12">
+    <div class="mt-4 text-center flip-in">
+      <div class="scene sm">
+        <div class="book">
+          <div class="side l">
+            <div class="cover"></div><div class="paper pp1"></div>
+            <div class="paper pp2"><i class="ln" style="top:26%"></i><i class="ln" style="top:44%"></i><i class="ln" style="top:62%;right:36%"></i></div>
+          </div>
+          <div class="side r">
+            <div class="cover"></div><div class="paper pp1"></div>
+            <div class="paper pp2"><i class="ln" style="top:26%"></i><i class="ln" style="top:44%"></i></div>
+          </div>
+          <div class="turn"><div class="paper"></div></div>
+        </div>
+      </div>
+      <div class="book-shadow"></div>
+
+      <div class="cat-chip mt-4 mb-3" style="background:var(--brand-soft);color:var(--brand-deep)">SIZGA MOS SOHA</div>
+      <h2 class="font-display font-bold text-[24px] leading-tight" id="result-title"></h2>
+      <p class="mt-3 leading-relaxed text-[15px]" style="color:var(--muted)" id="result-desc"></p>
+    </div>
+
+    <div class="rounded-2xl p-5 mt-6 mb-4 text-white" style="background:linear-gradient(135deg,#FF8250,var(--brand) 45%,var(--brand-deep));box-shadow:0 14px 30px -14px rgba(239,81,35,.55)">
+      <div class="text-[11px] font-bold tracking-wider opacity-80 mb-1">KIRISH IMTIHON FANLARI</div>
+      <div class="font-display font-bold text-lg" id="result-subjects"></div>
+      <div class="text-[12px] opacity-85 mt-1">2026/2027 rasmiy fanlar majmuasi bo'yicha</div>
+    </div>
+
+    <div class="rounded-2xl p-5 mb-4" style="background:#fff;border:1px solid var(--line)">
+      <div class="text-xs font-bold tracking-wide mb-4" style="color:var(--muted)">PSIXOLOGIK PROFIL</div>
+      <div id="result-bars" class="flex flex-col gap-3.5"></div>
+      <p class="text-[12px] mt-4 leading-relaxed" style="color:var(--muted)" id="result-second"></p>
+    </div>
+
+    <div class="rounded-2xl p-5 mb-4" style="background:#fff;border:1px solid var(--line)">
+      <div class="text-xs font-bold tracking-wide mb-3" style="color:var(--muted)">SIZGA MOS OTM YO'NALISHLARI</div>
+      <div id="result-directions" class="flex flex-wrap gap-2"></div>
+    </div>
+
+    <div class="rounded-2xl p-5 mb-4" style="background:#fff;border:1px solid var(--line)">
+      <div class="text-xs font-bold tracking-wide mb-3" style="color:var(--muted)">KELAJAKDAGI KASBLAR</div>
+      <div id="result-jobs" class="flex flex-wrap gap-2"></div>
+    </div>
+
+    <div class="rounded-2xl p-5 mb-6" style="background:var(--brand-tint);border:1.5px solid var(--brand)">
+      <div class="text-xs font-bold tracking-wide mb-1" style="color:var(--brand-deep)">REGISTONDA TAYYORLANING</div>
+      <p class="text-[13px] mb-3 leading-relaxed" style="color:var(--muted)">
+        Ushbu yo'nalish uchun kerakli fanlar bo'yicha
+        <b style="color:var(--ink)">Registondagi kurslarimiz</b>:
+      </p>
+      <div id="result-courses" class="flex flex-wrap gap-2"></div>
+    </div>
+
+    <!-- ⚙️ ADMIN: quyidagi ikkita havolani o'z ma'lumotlaringiz bilan almashtiring.
+         CONTACT sozlamalari fayl oxiridagi JS blokida (CONTACT obyekti) turadi. -->
+    <a id="cta-phone" href="#" class="cta-btn w-full block text-center py-4 rounded-2xl font-display font-bold text-white text-base mb-2.5" style="text-decoration:none">
+      📞 Qo'ng'iroq qilish
+    </a>
+    <a id="cta-telegram" href="#" target="_blank" rel="noopener"
+       class="w-full block text-center py-3.5 rounded-2xl font-display font-bold text-sm mb-2.5"
+       style="border:1.5px solid var(--brand);color:var(--brand-deep);background:#fff;text-decoration:none">
+      Telegram kanalimiz
+    </a>
+    <button onclick="restartQuiz()" class="w-full py-3.5 rounded-2xl font-display font-bold text-sm" style="border:1.5px solid var(--line);color:var(--ink);background:#fff;cursor:pointer">
+      Testni qayta topshirish
+    </button>
+    <p class="text-center text-[11px] mt-6" style="color:var(--muted)">© Registon O'quv Markazi · 50+ filial</p>
+  </section>
+</div>
+
+<div id="tg-warn">⚙️ <b>Admin:</b> Telegram bot sozlanmagan — lidlar yuborilmayapti.
+<code>index.html</code> ichida <b>BOT_TOKEN</b> va <b>CHAT_ID</b> ni kiriting.
+Tekshirish uchun manzil oxiriga <b>?admin=1</b> qo'shing.</div>
+
+<div id="admin-panel">
+  <div style="max-width:520px;margin:0 auto">
+    <h3 class="font-display font-bold text-lg mb-3">🔧 Telegram diagnostikasi</h3>
+    <div id="admin-status" class="mb-4"></div>
+    <button onclick="runTelegramTest()" class="cta-btn px-5 py-3 rounded-xl font-bold text-white text-sm mb-4">Test xabar yuborish</button>
+    <pre id="admin-log">Kutilmoqda...</pre>
+    <button onclick="document.getElementById('admin-panel').style.display='none'"
+            class="mt-4 px-5 py-2.5 rounded-xl text-sm" style="background:#fff;color:var(--ink);border:none;cursor:pointer">Yopish</button>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   ⚙️  TELEGRAM SOZLAMALARI — LIDLAR SHU YERGA TUSHADI
+   ---------------------------------------------------------------------
+   1) BOT_TOKEN — @BotFather bergan token.
+        Namuna: "7123456789:AAHxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+   2) CHAT_ID — lid tushadigan chat raqami:
+        • GURUH:  botni guruhga qo'shing → guruhda biror xabar yozing →
+                  brauzerda oching: https://api.telegram.org/bot<TOKEN>/getUpdates
+                  → "chat":{"id":-1001234567890} → shu raqamni oling.
+                  ⚠️ Guruh ID MINUS (-) bilan boshlanadi, uni tushirib qoldirmang!
+        • KANAL:  bot kanalga ADMIN qilib qo'shilishi shart.
+        • SHAXSIY: o'sha odam botga /start bosgan bo'lishi SHART.
+
+   3) Ikkalasini ham qo'shtirnoq ichida yozing.
+
+   ✅ TEKSHIRISH: sayt manziliga ?admin=1 qo'shib oching
+      (masalan: sizning-sayt.vercel.app/?admin=1) →
+      "Test xabar yuborish" tugmasi Telegram javobini to'liq ko'rsatadi.
+   ===================================================================== */
+var BOT_TOKEN = "SHU_YERGA_BOT_TOKEN";
+var CHAT_ID   = "SHU_YERGA_CHAT_ID";
+
+/* =====================================================================
+   ☎️  ALOQA MA'LUMOTLARI — natija ekranidagi tugmalar
+   Bularni O'ZINGIZNING haqiqiy ma'lumotlaringiz bilan almashtiring.
+   phone  — xalqaro formatda, probelsiz:  "+998901234567"
+   phoneLabel — tugmada ko'rinadigan matn: "90-123-45-67"
+   telegram — kanal yoki adminning to'liq havolasi
+   ===================================================================== */
+var CONTACT = {
+  phone: "",                 // masalan: "+998901234567"
+  phoneLabel: "",            // masalan: "90-123-45-67"
+  telegram: ""               // masalan: "https://t.me/registon_kanal"
+};
+
+/* ===================== SOHALAR =====================
+   0 Tibbiyot · 1 IT · 2 Iqtisod · 3 Huquq · 4 Tillar · 5 Xalqaro · 6 Pedagogika
+   Fanlar 2026/2027 rasmiy "Fanlar majmuasi" hujjatidan olingan.
+   ================================================== */
+var CATEGORIES = [
+  {
+    title:"Tibbiyot va tabiiy fanlar",
+    trait:"G'amxo'r · kuzatuvchan · sabrli",
+    desc:"Siz odamlarning ahvoliga befarq emassiz, mayda detallarni payqaysiz va natijani shoshilmasdan, bosqichma-bosqich kutishga sabringiz yetadi. Bu — tirik organizm bilan ishlaydigan kasblarning asosiy fazilati.",
+    subjects:"Biologiya + Kimyo",
+    directions:["Davolash ishi","Stomatologiya","Pediatriya ishi","Farmatsiya","Veterinariya meditsinasi","Biotexnologiya"],
+    jobs:["Shifokor","Stomatolog","Farmatsevt","Pediatr","Biotexnolog"],
+    courses:["Kimyo (milliy sertifikat)","Biologiya (milliy sertifikat)"]
+  },
+  {
+    title:"IT va muhandislik",
+    trait:"Mantiqiy · tizimli · mustaqil",
+    desc:"Siz narsalarning ichki tuzilishini bilishni xohlaysiz, murakkab masalani bo'laklarga ajratib yechasiz va uzoq vaqt bir muammo ustida yolg'iz ishlashdan charchamaysiz. Bu — muhandis va dasturchining fikrlash uslubi.",
+    subjects:"Matematika + Fizika",
+    directions:["Dasturiy injiniring","Sun'iy intellekt","Kiberxavfsizlik injiniringi","Kompyuter injiniringi","Mexatronika va robototexnika","Axborot tizimlari va texnologiyalari"],
+    jobs:["Dasturchi","AI muhandisi","Kiberxavfsizlik mutaxassisi","Robototexnik"],
+    courses:["Matematika (milliy sertifikat)"]
+  },
+  {
+    title:"Iqtisodiyot va biznes",
+    trait:"Tashabbuskor · hisobli · natijaga yo'nalgan",
+    desc:"Siz imkoniyatni boshqalardan oldin ko'rasiz, qaror qabul qilishdan qo'rqmaysiz va har bir ishning foyda-zararini o'lchashga odatlangansiz. Bu — tadbirkor va moliyachining tabiati.",
+    subjects:"Matematika + Chet tili",
+    directions:["Iqtisodiyot","Moliya va moliyaviy texnologiyalar","Bank ishi","Marketing","Menejment","Biznesni boshqarish","Logistika"],
+    jobs:["Iqtisodchi","Moliyachi","Marketolog","Menejer","Tadbirkor"],
+    courses:["Matematika (milliy sertifikat)","Ingliz tili (CEFR, IELTS)"]
+  },
+  {
+    title:"Huquqshunoslik",
+    trait:"Adolatparvar · prinsipial · dalilga tayanadigan",
+    desc:"Sizda \"to'g'ri\" va \"noto'g'ri\" chegarasi aniq, fikringizni asoslab bera olasiz va bosim ostida ham prinsipingizdan chekinmaysiz. Bu — huquqshunoslikning poydevori.",
+    subjects:"Huquqshunoslik fanlari + Chet tili",
+    directions:["Yurisprudensiya","Davlat va jamiyat boshqaruvi"],
+    jobs:["Advokat","Prokuror","Sudya","Yurist-maslahatchi","Notarius"],
+    courses:["Huquq","Ingliz tili (CEFR, IELTS)"]
+  },
+  {
+    title:"Xorijiy tillar va filologiya",
+    trait:"Muloqotchan · sezgir · so'zga chechan",
+    desc:"Siz so'zning ohangini va ma'no nozikligini his qilasiz, notanish muhitda tez moslashasiz va yangi tilni o'rganish sizga mashaqqat emas, qiziqish. Bu — tilchi va tarjimonning ustunligi.",
+    subjects:"Chet tili + Ona tili va adabiyoti",
+    directions:["Filologiya va tillarni o'qitish: ingliz tili","Tarjima nazariyasi va amaliyoti","Xorijiy til va adabiyoti: koreys tili","Filologiya: turk tili","Noshirlik ishi"],
+    jobs:["Tarjimon","Filolog","Til o'qituvchisi","Gid-tarjimon","Muharrir"],
+    courses:["Ingliz tili (CEFR, IELTS)","Koreys tili (TOPIK)","Turk tili (milliy sertifikat)","Rus tili (milliy sertifikat, TRKI)","Ona tili va adabiyot (milliy sertifikat)"]
+  },
+  {
+    title:"Xalqaro munosabatlar va tarix",
+    trait:"Keng dunyoqarash · muzokarachi · tahlilchi",
+    desc:"Siz voqealarni sabab-oqibat zanjirida ko'rasiz, turli tomonning manfaatini bir vaqtda tushuna olasiz va murosaga yo'l topasiz. Bu — diplomat va siyosatshunosning kaliti.",
+    subjects:"Tarix + Chet tili",
+    directions:["Xalqaro munosabatlar","Siyosatshunoslik","Turizm va mehmondo'stlik","Jahon iqtisodiyoti va xalqaro iqtisodiy munosabatlar","Mamlakatshunoslik"],
+    jobs:["Diplomat","Siyosatshunos","Turizm menejeri","Davlat xizmatchisi"],
+    courses:["Tarix (milliy sertifikat)","Ingliz tili (CEFR, IELTS)"]
+  },
+  {
+    title:"Pedagogika va psixologiya",
+    trait:"Empatik · sabrli · tushuntira oladigan",
+    desc:"Siz odamning kayfiyatini so'zsiz ham sezasiz, murakkab narsani sodda qilib aytib bera olasiz va boshqaning o'sishidan chin dildan quvonasiz. Bu — ustoz va psixologning eng kuchli qurollari.",
+    subjects:"Biologiya / Tarix + Ona tili va adabiyoti",
+    directions:["Psixologiya","Pedagogika","Boshlang'ich ta'lim","O'zbek tili va adabiyoti","Maxsus pedagogika: logopediya","Ijtimoiy ish"],
+    jobs:["Psixolog","O'qituvchi","Logoped","Metodist","Ijtimoiy xodim"],
+    courses:["Ona tili va adabiyot (milliy sertifikat)","Biologiya (milliy sertifikat)","Tarix (milliy sertifikat)"]
+  }
+];
+
+/* ===================== PSIXOLOGIK SAVOLLAR =====================
+   Tamoyil: savollar bevosita "qaysi fanni yoqtirasiz?" deb so'ramaydi —
+   xulq-atvor, qadriyat, motivatsiya va kognitiv uslubni bilvosita o'lchaydi.
+   Ball tartibi: [Tibbiyot, IT, Iqtisod, Huquq, Tillar, Xalqaro, Pedagogika]
+   ============================================================== */
+var QUESTIONS = [
+  {
+    tag:"TABIIY QIZIQISH",
+    text:"Notanish, qiziq bir narsani ko'rib qoldingiz. Xayolingizga birinchi keladigan savol qaysi?",
+    options:[
+      {t:"Bu qanday ishlaydi? Ichida nima bor?", p:[0,3,0,0,0,0,0]},
+      {t:"Bu organizmga qanday ta'sir qiladi?", p:[3,0,0,0,0,0,0]},
+      {t:"Buni sotib, daromad qilsa bo'ladimi?", p:[0,0,3,0,0,0,0]},
+      {t:"Bu qonunga to'g'ri keladimi?", p:[0,0,0,3,0,0,0]},
+      {t:"Buni boshqa tillarda qanday atashadi?", p:[0,0,0,0,3,0,0]},
+      {t:"Bu qayerda va qachon paydo bo'lgan?", p:[0,0,0,0,0,3,0]},
+      {t:"Buni kichkina bolaga qanday tushuntirsam bo'ladi?", p:[0,0,0,0,0,0,3]}
+    ]
+  },
+  {
+    tag:"BOLALIK XULQI",
+    text:"Bolaligingizda ko'proq nima bilan band bo'lardingiz?",
+    options:[
+      {t:"O'yinchoqlarni ochib, ichini ko'rardim va qayta yig'ardim", p:[0,3,0,0,0,0,0]},
+      {t:"Hayvon boqardim, o'simlik ekardim, \"shifokor\" o'ynardim", p:[3,0,0,0,0,0,0]},
+      {t:"\"Do'kon\" o'ynardim, narsa almashardim, pul yig'ardim", p:[0,0,3,0,0,0,0]},
+      {t:"Adolat talab qilardim, bahslashardim, hakam bo'lardim", p:[0,0,0,3,0,0,0]},
+      {t:"Multfilmdagi so'zlarni takrorlardim, xorijiy qo'shiq yodlardim", p:[0,0,0,0,3,0,0]},
+      {t:"Xarita va globusni tomosha qilardim, mamlakatlarni so'rardim", p:[0,0,0,0,0,3,0]},
+      {t:"Qo'g'irchoqlarimga dars berardim, kichiklarga o'rgatardim", p:[0,0,0,0,0,0,3]}
+    ]
+  },
+  {
+    tag:"QADRIYAT",
+    text:"Quyidagilardan qaysi biri sizni eng ko'p asabiylashtiradi?",
+    options:[
+      {t:"Mantiqsizlik va tartibsizlik", p:[0,3,1,0,0,0,0]},
+      {t:"Odamning o'z sog'lig'iga beparvoligi", p:[3,0,0,0,0,0,0]},
+      {t:"Adolatsizlik va qoidabuzarlik", p:[0,0,0,3,0,1,0]},
+      {t:"Vaqt va imkoniyatning behuda ketishi", p:[0,0,3,0,0,0,0]},
+      {t:"Savodsiz, xato yozilgan matn", p:[0,0,0,0,3,0,0]},
+      {t:"Odamlarning bir-birini eshitmasligi", p:[0,0,0,0,0,2,2]},
+      {t:"Yuzaki, sayoz fikrlash", p:[0,1,0,0,0,3,0]}
+    ]
+  },
+  {
+    tag:"IJTIMOIY REAKSIYA",
+    text:"Do'stingiz jiddiy muammo bilan sizga keldi. Birinchi qilgan ishingiz:",
+    options:[
+      {t:"Muammoni bosqichlarga bo'lib, aniq reja tuzib beraman", p:[0,3,1,0,0,0,0]},
+      {t:"Avval uni tinglayman, ruhini ko'taraman", p:[1,0,0,0,0,0,3]},
+      {t:"Kim haq, kim nohaqligini aniqlayman", p:[0,0,0,3,0,0,0]},
+      {t:"Bu holat sog'lig'iga zarar qilmayaptimi, deb qayg'uraman", p:[3,0,0,0,0,0,0]},
+      {t:"Foyda-zararni hisoblab, eng amaliy yo'lni ko'rsataman", p:[0,0,3,0,0,0,0]},
+      {t:"Kerakli odam bilan bog'lab, vositachilik qilaman", p:[0,0,1,0,1,3,0]}
+    ]
+  },
+  {
+    tag:"KOGNITIV USLUB",
+    text:"Yangi, murakkab mavzuni o'zlashtirishda sizga eng qulayi:",
+    options:[
+      {t:"Formula, sxema va misollar orqali", p:[0,3,1,0,0,0,0]},
+      {t:"O'zim sinab ko'rib, kuzatib", p:[3,1,0,0,0,0,0]},
+      {t:"Grafik, jadval va raqamlar orqali", p:[0,1,3,0,0,0,0]},
+      {t:"Aniq ta'rif va qoidalarni yodlab", p:[0,0,0,4,0,0,0]},
+      {t:"Eshitib, takrorlab, ovoz chiqarib o'qib", p:[0,0,0,0,3,0,0]},
+      {t:"Voqealar zanjiri va sabab-oqibatni tushunib", p:[0,0,0,0,0,3,0]},
+      {t:"Boshqa birovga tushuntirib berish orqali", p:[0,0,0,0,0,0,3]}
+    ]
+  },
+  {
+    tag:"IDEAL MUHIT",
+    text:"Ideal ish kuningizni tasavvur qiling. U ko'proq nimadan iborat?",
+    options:[
+      {t:"Yolg'iz, chuqur diqqat bilan bitta murakkab masala ustida ishlash", p:[0,3,0,0,0,0,0]},
+      {t:"Odamlar bilan yuzma-yuz, ularga bevosita yordam berish", p:[3,0,0,0,0,0,1]},
+      {t:"Uchrashuvlar, muzokaralar, kelishuvlar", p:[0,0,3,0,0,0,0]},
+      {t:"Hujjatlar va dalillar bilan sinchkov ishlash", p:[0,0,0,4,0,0,0]},
+      {t:"Xorijliklar bilan muloqot, matnlar bilan ishlash", p:[0,0,0,0,3,1,0]},
+      {t:"Auditoriya oldida chiqish, o'rgatish", p:[0,0,0,0,0,0,3]}
+    ]
+  },
+  {
+    tag:"MOTIVATSIYA",
+    text:"Sizni ishlashga eng ko'p undaydigan narsa:",
+    options:[
+      {t:"Murakkab jumboqni yechish zavqi", p:[0,3,0,0,0,0,0]},
+      {t:"Kimningdir hayotini yaxshilash", p:[3,0,0,0,0,0,0]},
+      {t:"Mustaqillik va moddiy erkinlik", p:[0,0,3,0,0,0,0]},
+      {t:"Haqiqatni himoya qilish", p:[0,0,0,3,0,0,0]},
+      {t:"Yangi dunyo va madaniyatlarni kashf qilish", p:[0,0,0,0,2,2,0]},
+      {t:"Bilimimni boshqalarga yetkazish", p:[0,0,0,0,0,0,3]}
+    ]
+  },
+  {
+    tag:"NIZO USLUBI",
+    text:"Guruhda kelishmovchilik chiqdi. Siz odatda:",
+    options:[
+      {t:"Fakt va raqamlarni ko'rsatib, tortishuvni tugataman", p:[0,3,1,0,0,0,0]},
+      {t:"Har ikki tomonni tinglab, murosaga chaqiraman", p:[0,0,0,0,0,3,0]},
+      {t:"Qoidada nima deyilganini aniqlayman", p:[0,0,0,3,0,0,0]},
+      {t:"Vaziyat keskinlashmasligi uchun avval tinchitaman", p:[1,0,0,0,0,0,3]},
+      {t:"Qaysi variant foydaliroq ekanini hisoblab beraman", p:[0,0,3,0,0,0,0]},
+      {t:"To'g'ri so'z topib, fikrimni ta'sirchan ifodalayman", p:[0,0,0,1,3,0,0]}
+    ]
+  },
+  {
+    tag:"E'TIROF",
+    text:"Qaysi maqtov sizga eng yoqimli eshitiladi?",
+    options:[
+      {t:"\"Buni juda aqlli hal qilibsan\"", p:[0,3,0,0,0,0,0]},
+      {t:"\"Sen borligingda o'zimni xotirjam his qilaman\"", p:[3,0,0,0,0,0,0]},
+      {t:"\"Sening g'oyang ishladi, natija berdi\"", p:[0,0,3,0,0,0,0]},
+      {t:"\"Sen har doim haqiqatni himoya qilasan\"", p:[0,0,0,3,0,0,0]},
+      {t:"\"Sen juda chiroyli gapirasan va yozasan\"", p:[0,0,0,0,3,0,0]},
+      {t:"\"Dunyoqarashing juda keng\"", p:[0,0,0,0,0,3,0]},
+      {t:"\"Sen tushuntirganingdan keyin hammasi oydinlashdi\"", p:[0,0,0,0,0,0,3]}
+    ]
+  },
+  {
+    tag:"STRESS REAKSIYASI",
+    text:"Kutilmagan qiyin vaziyatda o'zingizni qanday tutasiz?",
+    options:[
+      {t:"Hissiyotni chetga surib, sovuqqonlik bilan tahlil qilaman", p:[0,3,0,2,0,0,0]},
+      {t:"Avval atrofdagilarning ahvolini o'ylayman", p:[3,0,0,0,0,0,1]},
+      {t:"Tez qaror qabul qilib, darhol harakatga o'taman", p:[0,0,3,0,0,0,0]},
+      {t:"Tajribali odamdan maslahat so'rayman", p:[1,0,0,0,0,0,2]},
+      {t:"Vaziyatni tashqaridan, kengroq nuqtai nazardan ko'raman", p:[0,0,0,0,0,3,0]},
+      {t:"Kerakli odamlar bilan gaplashib, kelishuvga erishaman", p:[0,0,1,0,2,1,0]}
+    ]
+  },
+  {
+    tag:"KELAJAK OBRAZI",
+    text:"10 yildan keyin gazetada siz haqingizda maqola chiqdi. Sarlavha qanday?",
+    options:[
+      {t:"\"Yosh muhandis yangi texnologiyani ishga tushirdi\"", p:[0,3,0,0,0,0,0]},
+      {t:"\"Shifokor murakkab operatsiyani muvaffaqiyatli o'tkazdi\"", p:[3,0,0,0,0,0,0]},
+      {t:"\"Yosh tadbirkor 100 ta ish o'rni yaratdi\"", p:[0,0,3,0,0,0,0]},
+      {t:"\"Advokat nohaq ayblanganni oqladi\"", p:[0,0,0,3,0,0,0]},
+      {t:"\"Tarjimon xalqaro shartnomani muvaffaqiyatli olib bordi\"", p:[0,0,0,0,3,0,0]},
+      {t:"\"Diplomat ikki davlat o'rtasida kelishuvga erishdi\"", p:[0,0,0,0,0,3,0]},
+      {t:"\"Ustoz shogirdlari xalqaro olimpiadada g'olib bo'ldi\"", p:[0,0,0,0,0,0,3]}
+    ]
+  },
+  {
+    tag:"MEHNAT QADRIYATI",
+    text:"Kasb tanlashda siz uchun eng muhimi nima?",
+    options:[
+      {t:"Doimiy o'sish va yangi bilim olish", p:[1,3,0,0,0,0,0]},
+      {t:"Odamlarga real, ko'rinadigan foyda keltirish", p:[3,0,0,0,0,0,1]},
+      {t:"Yuqori daromad va tez karyera", p:[0,0,3,0,0,0,0]},
+      {t:"Jamiyatdagi obro' va nufuz", p:[0,0,0,3,0,1,0]},
+      {t:"Xalqaro imkoniyatlar va sayohat", p:[0,0,0,0,3,1,0]},
+      {t:"Barqarorlik va tinch ish muhiti", p:[0,0,0,0,0,0,3]}
+    ]
+  },
+  {
+    tag:"KUCHLI TOMON",
+    text:"Qaysi fan juftligi bilan imtihon topshirish sizga qulayroq bo'lardi?",
+    anchor:true,
+    options:[
+      {t:"Matematika + Fizika", p:[0,4,1,0,0,0,0]},
+      {t:"Biologiya + Kimyo", p:[4,0,0,0,0,0,1]},
+      {t:"Matematika + Chet tili", p:[0,1,4,0,0,0,0]},
+      {t:"Huquqshunoslik fanlari + Chet tili", p:[0,0,0,4,0,1,0]},
+      {t:"Chet tili + Ona tili va adabiyoti", p:[0,0,0,0,4,0,1]},
+      {t:"Tarix + Chet tili", p:[0,0,0,0,0,4,1]},
+      {t:"Ona tili va adabiyoti + Biologiya/Tarix", p:[1,0,0,0,1,0,4]}
+    ]
+  },
+  {
+    tag:"QIZIQISH",
+    text:"Registondagi qaysi kurs sizni ko'proq qiziqtiradi?",
+    course:true,
+    options:[
+      {t:"Matematika (milliy sertifikat)", p:[0,3,2,0,0,0,0]},
+      {t:"Kimyo va Biologiya (milliy sertifikat)", p:[3,0,0,0,0,0,0]},
+      {t:"Ingliz tili (CEFR, IELTS)", p:[0,0,1,0,3,1,0]},
+      {t:"Huquq", p:[0,0,0,3,0,1,0]},
+      {t:"Tarix (milliy sertifikat)", p:[0,0,0,1,0,3,1]},
+      {t:"Ona tili va adabiyot (milliy sertifikat)", p:[0,0,0,0,1,0,3]},
+      {t:"Koreys tili (TOPIK) yoki Turk tili", p:[0,0,0,0,3,1,0]}
+    ]
+  }
+];
+
+/* ===================== HOLAT ===================== */
+var currentQ = 0;
+var answers = [];
+var finalScores = [0,0,0,0,0,0,0];
+var topIdx = 0, secondIdx = 1;
+var interestedCourse = "—";
+
+function show(id){
+  var s = document.querySelectorAll('.screen');
+  for(var i=0;i<s.length;i++){ s[i].style.display='none'; }
+  document.getElementById(id).style.display='block';
+  window.scrollTo(0,0);
+}
+
+function startQuiz(){
+  currentQ = 0;
+  answers = [];
+  for(var i=0;i<QUESTIONS.length;i++){ answers.push(null); }
+  show('screen-quiz');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  var q = QUESTIONS[currentQ];
+  document.getElementById('q-tag').textContent = q.tag;
+  document.getElementById('q-text').textContent = q.text;
+  document.getElementById('q-counter').textContent = (currentQ+1) + ' / ' + QUESTIONS.length;
+  document.getElementById('progress-bar').style.width =
+    Math.round(((currentQ+1)/QUESTIONS.length)*100) + '%';
+  document.getElementById('back-btn').style.visibility = currentQ > 0 ? 'visible' : 'hidden';
+
+  var wrap = document.getElementById('q-options');
+  wrap.innerHTML = '';
+  for(var i=0;i<q.options.length;i++){
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'opt-btn px-5 py-3.5 rounded-2xl' + (answers[currentQ]===i ? ' selected' : '');
+    btn.innerHTML = '<span class="text-[14.5px] leading-snug font-medium">' + q.options[i].t + '</span>';
+    btn.setAttribute('onclick','selectOption(' + i + ')');
+    wrap.appendChild(btn);
+  }
+
+  var card = document.getElementById('question-wrap');
+  card.classList.remove('card-in');
+  void card.offsetWidth;
+  card.classList.add('card-in');
+}
+
+function selectOption(idx){
+  answers[currentQ] = idx;
+  if(QUESTIONS[currentQ].course){ interestedCourse = QUESTIONS[currentQ].options[idx].t; }
+  if(currentQ < QUESTIONS.length - 1){
+    currentQ++;
+    renderQuestion();
+  } else {
+    show('screen-lead');
+  }
+}
+
+function prevQuestion(){
+  if(currentQ > 0){ currentQ--; renderQuestion(); }
+}
+
+function backToQuiz(){
+  currentQ = QUESTIONS.length - 1;
+  show('screen-quiz');
+  renderQuestion();
+}
+
+/* ===================== NATIJA ===================== */
+function computeResult(){
+  finalScores = [0,0,0,0,0,0,0];
+  var tieBreak = [0,0,0,0,0,0,0];   // ball teng chiqsa — "kuchli tomon" savoli hal qiladi
+  for(var i=0;i<QUESTIONS.length;i++){
+    if(answers[i] === null || answers[i] === undefined) continue;
+    var p = QUESTIONS[i].options[answers[i]].p;
+    for(var c=0;c<7;c++){
+      finalScores[c] += p[c];
+      if(QUESTIONS[i].anchor){ tieBreak[c] += p[c]; }
+    }
+  }
+  var idxs = [0,1,2,3,4,5,6];
+  idxs.sort(function(a,b){
+    if(finalScores[b] !== finalScores[a]) return finalScores[b] - finalScores[a];
+    return tieBreak[b] - tieBreak[a];
+  });
+  topIdx = idxs[0];
+  secondIdx = idxs[1];
+  return idxs;
+}
+
+function chip(text, bg, color, border){
+  var el = document.createElement('span');
+  el.className = 'cat-chip';
+  el.style.background = bg;
+  el.style.color = color;
+  if(border){ el.style.border = border; }
+  el.textContent = text;
+  return el;
+}
+
+function renderResult(){
+  var sorted = computeResult();
+  var cat = CATEGORIES[topIdx];
+
+  document.getElementById('result-title').textContent = cat.title;
+  document.getElementById('result-desc').textContent = cat.desc;
+  document.getElementById('result-subjects').textContent = cat.subjects;
+  document.getElementById('result-second').textContent =
+    "Ikkinchi mos sohangiz — " + CATEGORIES[secondIdx].title +
+    ". Agar asosiy yo'nalish sizga to'g'ri kelmasa, bu variantni ham ko'rib chiqing.";
+
+  var barsWrap = document.getElementById('result-bars');
+  barsWrap.innerHTML = '';
+  var topScore = finalScores[sorted[0]] || 1;
+  for(var i=0;i<3;i++){
+    var ci = sorted[i];
+    if(finalScores[ci] <= 0) continue;
+    var pct = Math.round(finalScores[ci] / topScore * 100);
+    var row = document.createElement('div');
+    row.innerHTML =
+      '<div class="flex justify-between text-[12.5px] mb-1.5">' +
+        '<span class="font-semibold">' + CATEGORIES[ci].title + '</span>' +
+        '<span class="font-bold" style="color:var(--brand)">' + pct + '%</span>' +
+      '</div>' +
+      '<div class="bar-track"><div class="bar-fill" data-w="' + pct + '"></div></div>' +
+      '<div class="text-[11px] mt-1" style="color:var(--muted)">' + CATEGORIES[ci].trait + '</div>';
+    barsWrap.appendChild(row);
+  }
+  setTimeout(function(){
+    var f = barsWrap.querySelectorAll('.bar-fill');
+    for(var i=0;i<f.length;i++){ f[i].style.width = f[i].getAttribute('data-w') + '%'; }
+  }, 160);
+
+  var dW = document.getElementById('result-directions'); dW.innerHTML='';
+  for(var i=0;i<cat.directions.length;i++){
+    dW.appendChild(chip(cat.directions[i], '#fff', 'var(--brand-deep)', '1px solid var(--brand)'));
+  }
+  var jW = document.getElementById('result-jobs'); jW.innerHTML='';
+  for(var i=0;i<cat.jobs.length;i++){
+    jW.appendChild(chip(cat.jobs[i], 'var(--brand-soft)', 'var(--brand-deep)'));
+  }
+  var cW = document.getElementById('result-courses'); cW.innerHTML='';
+  for(var i=0;i<cat.courses.length;i++){
+    cW.appendChild(chip(cat.courses[i], 'var(--brand)', '#fff'));
+  }
+}
+
+/* ===================== LID PANELI ===================== */
+function normalizePhone(v){
+  var d = String(v).replace(/\D/g,'');
+  if(d.length === 9){ d = '998' + d; }
+  if(d.length === 12 && d.slice(0,3) === '998'){ return '+' + d; }
+  return null;
+}
+
+function isConfigured(){
+  return BOT_TOKEN.indexOf('SHU_YERGA') !== 0 &&
+         CHAT_ID.indexOf('SHU_YERGA') !== 0 &&
+         BOT_TOKEN.length > 20;
+}
+
+function submitLead(){
+  var name  = document.getElementById('lead-name').value.trim();
+  var raw   = document.getElementById('lead-phone').value;
+  var grade = document.getElementById('lead-grade').value.trim();
+  var err   = document.getElementById('lead-error');
+  var btn   = document.getElementById('lead-submit-btn');
+  var phone = normalizePhone(raw);
+
+  if(name.length < 2){
+    err.textContent = 'Iltimos, ismingizni kiriting.';
+    err.style.display = 'block';
+    document.getElementById('lead-name').focus();
+    return;
+  }
+  if(!phone){
+    err.textContent = "Telefon raqamini to'g'ri kiriting. Masalan: +998 90 123 45 67";
+    err.style.display = 'block';
+    document.getElementById('lead-phone').focus();
+    return;
+  }
+  err.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Tayyorlanmoqda...';
+
+  computeResult();
+
+  /* Natija DARHOL ko'rsatiladi — Telegram xatosi foydalanuvchini hech qachon bloklamaydi */
+  show('screen-result');
+  renderResult();
+  btn.disabled = false;
+  btn.textContent = "Natijamni ko'rish \u2192";
+
+  var d = new Date();
+  function p2(n){ return (n<10?'0':'') + n; }
+  var t = p2(d.getDate())+'.'+p2(d.getMonth()+1)+'.'+d.getFullYear()+' '+p2(d.getHours())+':'+p2(d.getMinutes());
+
+  var msg =
+    "\uD83E\uDDED YO'NALISH KOMPAS \u2014 yangi lid\n\n" +
+    "\uD83D\uDC64 Ism: " + name + "\n" +
+    "\uD83D\uDCDE Tel: " + phone + "\n" +
+    (grade ? "\uD83C\uDF93 Sinf: " + grade + "\n" : "") +
+    "\n\uD83C\uDFC6 Natija: " + CATEGORIES[topIdx].title + "\n" +
+    "\uD83D\uDCDA Kirish fanlari: " + CATEGORIES[topIdx].subjects + "\n" +
+    "\uD83E\uDD48 2-o'rin: " + CATEGORIES[secondIdx].title + "\n" +
+    "\uD83D\uDD25 Qiziqqan kurs: " + interestedCourse + "\n" +
+    "\n\uD83D\uDD52 " + t;
+
+  sendToTelegram(msg, null);
+}
+
+/* POST → xato bo'lsa GET (rasm beacon) orqali zaxira urinish */
+function sendToTelegram(text, cb){
+  if(!isConfigured()){
+    console.warn("\u26A0\uFE0F Telegram sozlanmagan. Lid yuborilmadi:\n" + text);
+    if(cb) cb(false, 'BOT_TOKEN / CHAT_ID kiritilmagan');
+    return;
+  }
+  var url = 'https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage';
+  try{
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-Type','application/json');
+    xhr.timeout = 12000;
+    xhr.onload = function(){
+      if(xhr.status === 200){
+        console.log('\u2705 Lid Telegramga yuborildi');
+        if(cb) cb(true, xhr.responseText);
+      } else {
+        console.error('\u274C Telegram xatosi', xhr.status, xhr.responseText);
+        sendFallback(text);
+        if(cb) cb(false, 'HTTP ' + xhr.status + '\n' + xhr.responseText);
+      }
+    };
+    xhr.onerror = function(){
+      console.error('\u274C Tarmoq xatosi — zaxira usul ishga tushdi');
+      sendFallback(text);
+      if(cb) cb(false, 'Tarmoq xatosi (CORS yoki internet). Zaxira GET usuli sinab ko\'rildi.');
+    };
+    xhr.ontimeout = function(){
+      sendFallback(text);
+      if(cb) cb(false, 'Vaqt tugadi (timeout)');
+    };
+    xhr.send(JSON.stringify({ chat_id: CHAT_ID, text: text }));
+  } catch(e){
+    console.error(e);
+    sendFallback(text);
+    if(cb) cb(false, String(e));
+  }
+}
+
+function sendFallback(text){
+  try{
+    var img = new Image();
+    img.src = 'https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage?chat_id=' +
+      encodeURIComponent(CHAT_ID) + '&text=' + encodeURIComponent(text);
+  } catch(e){ console.error(e); }
+}
+
+function restartQuiz(){
+  currentQ = 0;
+  answers = [];
+  interestedCourse = "—";
+  document.getElementById('lead-name').value = '';
+  document.getElementById('lead-phone').value = '';
+  document.getElementById('lead-grade').value = '';
+  show('screen-welcome');
+}
+
+/* ===================== ADMIN DIAGNOSTIKA ===================== */
+function runTelegramTest(){
+  var log = document.getElementById('admin-log');
+  log.textContent = 'Yuborilmoqda...';
+  sendToTelegram('✅ TEST: Yo\'nalish Kompas sayti Telegramga ulandi. Vaqt: ' + new Date().toLocaleString(),
+    function(ok, detail){
+      log.textContent = (ok ? '✅ MUVAFFAQIYATLI!\nGuruhingizni tekshiring — test xabar keldi.\n\n'
+                            : '❌ XATO\n\n') + detail +
+        '\n\n--- Eng ko\'p uchraydigan sabablar ---\n' +
+        '• chat not found → CHAT_ID noto\'g\'ri (guruh ID minus bilan boshlanishi kerak)\n' +
+        '• Unauthorized → BOT_TOKEN noto\'g\'ri yoki eskirgan\n' +
+        '• bot was blocked / can\'t initiate → foydalanuvchi botga /start bosmagan\n' +
+        '• Forbidden → bot kanalga admin qilib qo\'shilmagan';
+    });
+}
+
+/* Aloqa tugmalarini sozlash — to'ldirilmagan tugma umuman ko'rsatilmaydi */
+(function initContact(){
+  var ph = document.getElementById('cta-phone');
+  var tg = document.getElementById('cta-telegram');
+  if(CONTACT.phone){
+    ph.href = 'tel:' + CONTACT.phone.replace(/[^\d+]/g,'');
+    ph.innerHTML = "\uD83D\uDCDE " + (CONTACT.phoneLabel || CONTACT.phone) + " \u2014 qo'ng'iroq qilish";
+  } else {
+    ph.style.display = 'none';
+  }
+  if(CONTACT.telegram){
+    tg.href = CONTACT.telegram;
+  } else {
+    tg.style.display = 'none';
+  }
+})();
+
+(function initAdmin(){
+  var configured = isConfigured();
+  if(!configured){ document.getElementById('tg-warn').style.display = 'block'; }
+
+  if(window.location.search.indexOf('admin=1') !== -1){
+    var panel = document.getElementById('admin-panel');
+    panel.style.display = 'block';
+    document.getElementById('admin-status').innerHTML =
+      '<div>BOT_TOKEN: <b>' + (configured ? BOT_TOKEN.slice(0,10) + '…(kiritilgan)' : '❌ KIRITILMAGAN') + '</b></div>' +
+      '<div>CHAT_ID: <b>' + (configured ? CHAT_ID : '❌ KIRITILMAGAN') + '</b></div>' +
+      (configured && String(CHAT_ID).charAt(0) !== '-' && String(CHAT_ID).indexOf('@') !== 0
+        ? '<div style="color:#FFB38A;margin-top:6px">⚠️ CHAT_ID minus bilan boshlanmayapti — agar bu guruh bo\'lsa, ID noto\'g\'ri.</div>'
+        : '') +
+      '<hr style="border-color:#5a3a2c;margin:10px 0">' +
+      '<div>Telefon: <b>' + (CONTACT.phone || '❌ kiritilmagan (tugma yashirilgan)') + '</b></div>' +
+      '<div>Telegram: <b>' + (CONTACT.telegram || '❌ kiritilmagan (tugma yashirilgan)') + '</b></div>';
+  }
+})();
+</script>
+</body>
+</html>
